@@ -69,8 +69,10 @@ class Board(Frame):
 
     def kill_surrounded(self, turn, near):
         groups = self.groups(turn, near)
+        print('[kill_surrounded] groups =', groups)
         for group in groups:
             if not self.isfree(group):
+                print('[kill_surrounded] not self.isfree(group)')
                 for x, y in group:
                     self.canvas.delete(self.grid[x][y])
 
@@ -89,8 +91,7 @@ class Board(Frame):
         return suspects
 
     def groups(self, turn, near):
-        self.group(turn, near)
-        return []
+        return [self.group(turn, near)]
 
     def degrees(self, group):
         border = set()
